@@ -50,7 +50,7 @@ export default function Page() {
 export default function FetchDataSteps() {
   return (
     <ol className="flex flex-col gap-6">
-      <Step title="Create some tables and insert some data">
+      {/* <Step title="Create some tables and insert some data">
         <p>
           Head over to the{" "}
           <a
@@ -93,7 +93,7 @@ export default function FetchDataSteps() {
 
       <Step title="Build in a weekend and scale to millions!">
         <p>You're ready to launch your product to the world! 🚀</p>
-      </Step>
+      </Step> */}
     </ol>
   );
 }

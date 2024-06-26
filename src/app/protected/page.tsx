@@ -25,7 +25,7 @@ export default async function ProtectedPage() {
       </div>
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
-        <FileUpload userName={user.email} />
+        <FileUpload userName={user.email || "public"} />
       </div>
 
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">

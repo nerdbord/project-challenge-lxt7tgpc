@@ -1,18 +1,20 @@
 "use client";
 
-import React, { ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 
-interface FileUploadProps{
-    userName: string;
-} 
+interface FileUploadProps {
+  userName: string;
+}
 const FileUpload = (props: FileUploadProps) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const supabase = createClient();
 
-
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFile(event.target.files[0]);
+    if (event.target.files) {
+      const selectedFile = event.target.files[0];
+      setFile(selectedFile);
+    }
   };
 
   const handleUpload = async () => {

@@ -2,6 +2,7 @@ import AuthButton from "@/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import FileUpload from "./fileUpload";
+import Gallery from "./gallery";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -26,6 +27,7 @@ export default async function ProtectedPage() {
 
       <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
         <FileUpload userName={user.email || "public"} />
+        <Gallery userID= {user.id}/>
       </div>
 
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">

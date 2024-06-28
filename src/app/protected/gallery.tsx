@@ -17,11 +17,11 @@ const Gallery = async (props: GalleryProps) => {
 
     return (
       <div id="istnieje">
-        {listData?.map((fotoObject) => {
+        {listData?.map((fotoObject, index) => {
           console.log(fotoObject.name);
           return (
             <img
-              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}`}
+              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}`} key={index}
             />
           );
         })}

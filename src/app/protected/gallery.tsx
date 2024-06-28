@@ -1,12 +1,13 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
 
 interface GalleryProps {
   userID: string;
 }
 
-const Gallery = async (props: GalleryProps) => {
+const Gallery = (props: GalleryProps) => {
   const { userID } = props;
   const supabase = createClient();
 
@@ -20,8 +21,10 @@ const Gallery = async (props: GalleryProps) => {
         {listData?.map((fotoObject, index) => {
           console.log(fotoObject.name);
           return (
-            <img
-              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}`} key={index}
+            <Image
+              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}`}
+              key={index}
+              alt={`Picture named ${fotoObject.name}`}
             />
           );
         })}

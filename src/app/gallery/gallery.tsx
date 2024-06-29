@@ -3,16 +3,14 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 interface GalleryProps {
   userID: string;
 }
 
 const Gallery = (props: GalleryProps) => {
-  const [fotoNames, setFotoNames] = useState<string[]>([]);
   const [fotoUrls, setFotoUrls] = useState<string[]>([]);
-  const [userIDstring, setUserIDstring] = useState("");
-
   const supabase = createClient();
 
   useEffect(() => {
@@ -28,8 +26,6 @@ const Gallery = (props: GalleryProps) => {
       return;
     }
 
-    setUserIDstring(userID);
-
     const { data: listData, error: listError } = await supabase.storage
       .from(userID)
       .list();
@@ -39,23 +35,34 @@ const Gallery = (props: GalleryProps) => {
       return;
     }
 
-    const namesFromData = listData?.map((fileObject) => {
-      return fileObject.name;
+    const urlsFromData = listData?.map((fileObject) => {
+      console.log(fileObject);
+
+      return `https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fileObject.name}`;
     });
 
-    setFotoNames(namesFromData);
+    setFotoUrls(urlsFromData);
   };
 
-  console.log(fotoNames);
+  const createPublicUrl = async (index: number) => {
+    navigator.clipboard.writeText(fotoUrls[index]);
+    toast.success("URL copied to clipboard.");
+  };
 
   return (
     <div className="flex flex-wrap justify-center gap-4">
-      {fotoNames.map((fotoName, index) => {
+      {fotoUrls.map((fotoUrl, index) => {
         return (
-          <div key={index} className="flex-none w-48 h-48 overflow-hidden">
+          <div
+            key={index}
+            className="flex-none w-48 h-48 overflow-hidden hover:opacity-50"
+            onClick={() => {
+              createPublicUrl(index);
+            }}
+          >
             <Image
-              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userIDstring}/${fotoName}`}
-              alt={fotoName}
+              src={fotoUrl}
+              alt={`Gallery photo #${index}`}
               height={500}
               width={500}
               className="object-cover w-full h-full"

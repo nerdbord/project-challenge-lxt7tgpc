@@ -10,6 +10,7 @@ interface GalleryProps {
 
 const Gallery = (props: GalleryProps) => {
   const [fotoNames, setFotoNames] = useState<string[]>([]);
+  const [fotoUrls, setFotoUrls] = useState<string[]>([]);
   const [userIDstring, setUserIDstring] = useState("");
 
   const supabase = createClient();
@@ -48,19 +49,21 @@ const Gallery = (props: GalleryProps) => {
   console.log(fotoNames);
 
   return (
-    <>
+    <div className="flex flex-wrap justify-center gap-4">
       {fotoNames.map((fotoName, index) => {
         return (
-          <Image
-            src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userIDstring}/${fotoName}`}
-            alt={fotoName}
-            height={500}
-            width={500}
-            key={index}
-          />
+          <div key={index} className="flex-none w-48 h-48 overflow-hidden">
+            <Image
+              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userIDstring}/${fotoName}`}
+              alt={fotoName}
+              height={500}
+              width={500}
+              className="object-cover w-full h-full"
+            />
+          </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

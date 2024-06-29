@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
-import { sign } from "crypto";
 
 const AnonymousFileUpload = () => {
   const [file, setFile] = useState<File | null>(null);

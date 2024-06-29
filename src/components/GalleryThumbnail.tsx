@@ -47,7 +47,6 @@ const GalleryThumbnail = (props: GalleryThumbnailProps) => {
       <Image
         src={props.url}
         alt={`Gallery photo`}
-
         height={500}
         width={500}
         className="object-cover w-full h-full group-hover:opacity-50"

@@ -15,7 +15,7 @@ const Gallery = (props: GalleryProps) => {
 
   useEffect(() => {
     serveFotos();
-  }, [fotoUrls]);
+  }, []);
 
   const serveFotos = async () => {
     const { data: userData } = await supabase.auth.getUser();

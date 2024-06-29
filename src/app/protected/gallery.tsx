@@ -2,37 +2,68 @@
 
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface GalleryProps {
   userID: string;
 }
 
 const Gallery = (props: GalleryProps) => {
-  const { userID } = props;
+  const [fotoNames, setFotoNames] = useState<string[]>([]);
+  const [userIDstring, setUserIDstring] = useState("");
+
   const supabase = createClient();
 
-  const serveFotos = async (id: string) => {
+  useEffect(() => {
+    serveFotos();
+  }, []);
+
+  const serveFotos = async () => {
+    const { data: userData } = await supabase.auth.getUser();
+    const userID = userData.user?.id;
+
+    if (!userID) {
+      console.error("User ID not found.");
+      return;
+    }
+
+    setUserIDstring(userID);
+
     const { data: listData, error: listError } = await supabase.storage
-      .from(id)
+      .from(userID)
       .list();
 
-    return (
-      <div id="istnieje">
-        {listData?.map((fotoObject, index) => {
-          console.log(fotoObject.name);
-          return (
-            <Image
-              src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}`}
-              key={index}
-              alt={`Picture named ${fotoObject.name}`}
-            />
-          );
-        })}
-      </div>
-    );
+    if (listError) {
+      console.error("Storage error: ", listError);
+      return;
+    }
+
+    const namesFromData = listData?.map((fileObject) => {
+      return fileObject.name;
+    });
+
+    setFotoNames(namesFromData);
   };
 
-  return <>{serveFotos(props.userID)}</>;
+  console.log(fotoNames);
+
+  return (
+    <>
+      {fotoNames.map((fotoName, index) => {
+        return (
+          <Image
+            src={`https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userIDstring}/${fotoName}`}
+            alt={fotoName}
+            height={500}
+            width={500}
+            key={index}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default Gallery;
+
+//https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fotoObject.name}

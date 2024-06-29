@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import FileUpload from "./fileUpload";
 import Gallery from "./gallery";
 
-export default async function ProtectedPage() {
+export default async function GalleryPage() {
   const supabase = createClient();
 
   const {

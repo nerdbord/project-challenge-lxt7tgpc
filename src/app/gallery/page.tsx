@@ -3,6 +3,7 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import FileUpload from './fileUpload';
 import Gallery from './gallery';
+import Logo from '@/assets/icons/Logo';
 
 export default async function GalleryPage() {
   const supabase = createClient();
@@ -20,7 +21,7 @@ export default async function GalleryPage() {
       <div className="w-full">
         <nav className="border-b-foreground/10 flex h-16 w-full justify-center border-b">
           <div className="flex w-full max-w-4xl items-center justify-between p-3 text-sm">
-            <div>LOGO</div>
+            <div><Logo/></div>
             <AuthButton />
           </div>
         </nav>

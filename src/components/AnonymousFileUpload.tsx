@@ -49,9 +49,9 @@ const AnonymousFileUpload = () => {
 
   return (
     <div>
-      <div>
-        <input type="file" onChange={handleFileChange} id="fileInput" />
-        <button onClick={handleUpload} disabled={!file}>
+      <div className="flex justify-between">
+        <input type="file" onChange={handleFileChange} id="fileInput" className="file-input file-input-bordered file-input-primary w-full max-w-xs"/>
+        <button onClick={handleUpload} disabled={!file} className="btn btn-primary">
           Get shareable URL
         </button>
       </div>

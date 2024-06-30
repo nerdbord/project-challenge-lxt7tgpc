@@ -1,11 +1,12 @@
-import AuthButton from "../components/AuthButton";
-import AnonymousFileUpload from "@/components/AnonymousFileUpload";
+import AuthButton from '../components/AuthButton';
+import AnonymousFileUpload from '@/components/AnonymousFileUpload';
 
 export default async function Index() {
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
+    <div className="flex w-full flex-1 flex-col items-center gap-20">
+      <nav className="border-b-foreground/10 flex h-16 w-full justify-center border-b">
+        <div className="flex w-full max-w-4xl items-center justify-between p-3 text-sm">
+          <div>LOGO</div>
           <AuthButton />
         </div>
       </nav>

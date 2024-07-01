@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
+import Header from '@/components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-none`} data-theme="cupcake">
         <main className="flex min-h-screen w-full flex-col items-center">
           <Toaster position="bottom-right" />
+          <Header/>
           {children}
           <Footer />
         </main>

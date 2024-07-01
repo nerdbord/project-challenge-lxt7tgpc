@@ -23,7 +23,7 @@ const AnonymousFileUpload = () => {
 
   const handleUpload = async () => {
     if (!file) return;
-    const modal = document.getElementById('my_modal_1');
+    const modal = document.getElementById('my_modal_1') as HTMLDialogElement;
     if (modal) {
       modal.showModal();
     }

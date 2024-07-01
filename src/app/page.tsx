@@ -1,4 +1,5 @@
 import Logo from '@/assets/icons/Logo';
+import NavBar from '@/utils/theme/NavBar';
 import AuthButton from '../components/AuthButton';
 import AnonymousFileUpload from '@/components/AnonymousFileUpload';
 import ThemeDropdown from '@/components/ThemeDropdown';
@@ -12,6 +13,7 @@ export default async function Index() {
             <Logo />
           </div>
           <AuthButton />
+          <NavBar />
         </div>
       </nav>
       <div className="flex w-full max-w-4xl items-center justify-between p-3 text-sm ">

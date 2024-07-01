@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 
 interface GalleryProps {
-  userID: string;
+  galleryReload: boolean
 }
 
 const Gallery = (props: GalleryProps) => {
@@ -15,9 +15,13 @@ const Gallery = (props: GalleryProps) => {
 
   useEffect(() => {
     serveFotos();
-  }, []);
+  }, [props.galleryReload]);
 
   const serveFotos = async () => {
+
+
+
+    
     const { data: userData } = await supabase.auth.getUser();
     const userID = userData.user?.id;
 
@@ -38,7 +42,7 @@ const Gallery = (props: GalleryProps) => {
     }
 
     const urlsFromData = listData?.map((fileObject) => {
-      return `https://tyiepcyjjjqkiowjwbmg.supabase.co/storage/v1/object/public/${userID}/${fileObject.name}`;
+      return supabase.storage.from(userID).getPublicUrl(fileObject.name).data.publicUrl
     });
 
 

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 
 interface FileUploadProps {
-  userName: string;
+  galleryReloadHandler: () => void
 }
 const FileUpload = (props: FileUploadProps) => {
   const [file, setFile] = useState<File | null>(null);
@@ -62,7 +62,7 @@ const FileUpload = (props: FileUploadProps) => {
     } else {
       console.log("File uploaded successfully:", data);
     }
-
+    props.galleryReloadHandler()
   };
 
   return (

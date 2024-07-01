@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 
 interface FileUploadProps {
-  userName: string;
+  galleryReloadHandler: () => void
 }
 const FileUpload = (props: FileUploadProps) => {
   const [file, setFile] = useState<File | null>(null);
@@ -62,13 +62,13 @@ const FileUpload = (props: FileUploadProps) => {
     } else {
       console.log("File uploaded successfully:", data);
     }
-
+    props.galleryReloadHandler()
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} id="fileInput" />
-      <button onClick={handleUpload} disabled={!file}>
+    <div className="flex justify-between">
+      <input type="file" onChange={handleFileChange} id="fileInput" className="file-input file-input-bordered file-input-primary w-full max-w-xs"/>
+      <button onClick={handleUpload} disabled={!file} className="btn btn-primary">
         Upload
       </button>
     </div>

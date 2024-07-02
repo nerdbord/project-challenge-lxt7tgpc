@@ -1,9 +1,5 @@
-import AuthButton from '@/components/AuthButton';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
-import FileUpload from './fileUpload';
-import Gallery from './gallery';
-import Logo from '@/assets/icons/Logo';
 import GalleryWrapper from './GalleryWrapper';
 
 export default async function GalleryPage() {

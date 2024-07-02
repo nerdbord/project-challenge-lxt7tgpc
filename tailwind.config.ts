@@ -5,6 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/utils/theme/**',
   ],
   theme: {
     extend: {
@@ -16,7 +17,7 @@ const config: Config = {
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui'), require('tailwindcss-signals')],
   daisyui: {
-    themes: ['cupcake', 'dark', 'light', 'cyberpunk', 'aqua'],
+    themes: ['cupcake', 'dark', 'light', 'cyberpunk', 'aqua', 'retro'],
   },
 };
 export default config;

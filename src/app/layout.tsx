@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import Footer from '@/components/Footer';
-import { ThemeProvider } from '@/utils/theme/ThemeContext';
-import { ClientThemeWrapper } from '@/utils/theme/ClientThemeWrapper';
+import { ThemeProvider } from '@/components/changeTheme/ThemeContext';
+import { ClientThemeWrapper } from '@/components/changeTheme/ClientThemeWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 const defaultUrl = process.env.VERCEL_URL

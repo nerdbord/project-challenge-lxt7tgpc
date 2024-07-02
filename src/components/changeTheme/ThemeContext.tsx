@@ -6,9 +6,10 @@ const getDataFromLocalStorage = (key: string) => {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : null;
 };
+
 interface ThemeContextType {
   theme?: string;
-  changeTheme?: (nextTheme?: string) => void;
+  changeTheme?: (event?: any) => void;
 }
 export const ThemeContext = createContext<ThemeContextType>({});
 

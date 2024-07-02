@@ -2,7 +2,6 @@ import Logo from '@/assets/icons/Logo';
 import { ThemeSelect } from '@/components/changeTheme/ThemeSelect';
 import AuthButton from '../components/AuthButton';
 import AnonymousFileUpload from '@/components/AnonymousFileUpload';
-import ThemeDropdown from '@/components/ThemeDropdown';
 
 export default async function Index() {
   return (

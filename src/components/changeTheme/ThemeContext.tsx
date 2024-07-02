@@ -1,11 +1,6 @@
 'use client';
 
-import { createContext, useState } from 'react';
-
-const getDataFromLocalStorage = (key: string) => {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
-};
+import { createContext, useState, useLayoutEffect, useEffect } from 'react';
 
 interface ThemeContextType {
   theme?: string;
@@ -14,12 +9,33 @@ interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType>({});
 
 export const ThemeProvider = ({ children }: any) => {
-  const [theme, setTheme] = useState<string>('light');
+  const getThemeFromLocalStorage = () => {
+    const data = localStorage.getItem('theme');
+    return data ? JSON.parse(data) : null;
+  };
+
+  const saveThemeToLocalStorage = (themeName: string) => {
+    localStorage.setItem('theme', JSON.stringify(themeName));
+  };
+
+  const [theme, setTheme] = useState<string>(getThemeFromLocalStorage() || 'light');
+
+  // const storedTheme = getThemeFromLocalStorage();
+  // storedTheme ? setTheme(storedTheme) : setTheme('light');
+  // useLayoutEffect(() => {
+  //   const storedTheme = getThemeFromLocalStorage();
+  //   if (storedTheme) setTheme(storedTheme);
+  // }, []);
+
+  useEffect(() => {
+    saveThemeToLocalStorage(theme);
+  }, [theme]);
 
   const changeTheme = (event?: any) => {
     const nextTheme: string | null = event.target.value || null;
     if (nextTheme) {
       setTheme(nextTheme);
+      saveThemeToLocalStorage(nextTheme);
     } else {
       setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
     }

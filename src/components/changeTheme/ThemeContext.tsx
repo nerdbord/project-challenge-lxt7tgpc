@@ -28,6 +28,11 @@ export const ThemeProvider = ({ children }: any) => {
     saveThemeToLocalStorage(theme);
   }, [theme]);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const changeTheme = (event?: any) => {
     const nextTheme: string | null = event.target.value || null;
     if (nextTheme) {
@@ -37,5 +42,8 @@ export const ThemeProvider = ({ children }: any) => {
       setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
     }
   };
+
+  if (!mounted) return null;
+
   return <ThemeContext.Provider value={{ theme, changeTheme }}>{children}</ThemeContext.Provider>;
 };

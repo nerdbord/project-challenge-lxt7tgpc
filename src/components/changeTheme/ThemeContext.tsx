@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useLayoutEffect } from 'react';
 
 interface ThemeContextType {
   theme?: string;
@@ -13,19 +13,16 @@ export const ThemeProvider = ({ children }: any) => {
     const data = localStorage.getItem('theme');
     return data ? JSON.parse(data) : null;
   };
-
   const saveThemeToLocalStorage = (themeName: string) => {
     localStorage.setItem('theme', JSON.stringify(themeName));
   };
 
-  const [theme, setTheme] = useState<string>(getThemeFromLocalStorage() || 'light');
+  const [theme, setTheme] = useState<string>('');
 
-  // const storedTheme = getThemeFromLocalStorage();
-  // storedTheme ? setTheme(storedTheme) : setTheme('light');
-  // useLayoutEffect(() => {
-  //   const storedTheme = getThemeFromLocalStorage();
-  //   if (storedTheme) setTheme(storedTheme);
-  // }, []);
+  useLayoutEffect(() => {
+    const storedTheme = getThemeFromLocalStorage();
+    if (storedTheme) setTheme(storedTheme);
+  }, []);
 
   useEffect(() => {
     saveThemeToLocalStorage(theme);

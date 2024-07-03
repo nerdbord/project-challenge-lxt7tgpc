@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import toast from "react-hot-toast";
 
 interface FileUploadProps {
   galleryReloadHandler: () => void
@@ -61,6 +62,7 @@ const FileUpload = (props: FileUploadProps) => {
       console.error("Error uploading file:", uploadError);
     } else {
       console.log("File uploaded successfully:", data);
+      toast.success("File uploaded!")
     }
     props.galleryReloadHandler()
   };

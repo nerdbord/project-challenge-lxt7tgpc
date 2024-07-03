@@ -27,7 +27,6 @@ export default function RootLayout({
       <body className={`${inter.className} bg-none`} data-theme="cupcake">
         <main className="flex min-h-screen w-full flex-col items-center">
           <Toaster position="bottom-right" />
-
           <ThemeProvider>
             <ClientThemeWrapper>
               {children} <Footer />

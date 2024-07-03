@@ -52,68 +52,69 @@ export default function Login({
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-      <Link
-        href="/"
-        className="absolute left-8 top-8 py-2 px-4 flex items-center group text-sm btn btn-outline btn-primary"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
+    <div className="flex justify-center">
+      <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2 my-24">
+        <Link
+          href="/"
+          className="absolute left-8 top-8 py-2 px-4 flex items-center group text-sm btn btn-outline btn-primary"
         >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>{" "}
-        Back
-      </Link>
-
-      <form className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
-        <label className="text-md" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="px-4 py-2 input input-bordered input-primary w-full "
-          name="email"
-          placeholder="you@example.com"
-          required
-        />
-        <label className="text-md" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="px-4 py-2 input input-bordered input-primary w-full "
-          type="password"
-          name="password"
-          placeholder="••••••••"
-          required
-        />
-        <SubmitButton
-          formAction={signIn}
-          className="px-4 py-2 btn btn-primary"
-          pendingText="Signing In..."
-        >
-          Sign In
-        </SubmitButton>
-        <SubmitButton
-          formAction={signUp}
-          className="px-4 py-2 btn btn-outline btn-primary"
-          pendingText="Signing Up..."
-        >
-          Sign Up
-        </SubmitButton>
-        {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-            {searchParams.message}
-          </p>
-        )}
-      </form>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>{" "}
+          Back
+        </Link>
+        <form className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
+          <label className="text-md" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="px-4 py-2 input input-bordered input-primary w-full "
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+          <label className="text-md" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="px-4 py-2 input input-bordered input-primary w-full "
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          />
+          <SubmitButton
+            formAction={signIn}
+            className="px-4 py-2 btn btn-primary"
+            pendingText="Signing In..."
+          >
+            Sign In
+          </SubmitButton>
+          <SubmitButton
+            formAction={signUp}
+            className="px-4 py-2 btn btn-outline btn-primary"
+            pendingText="Signing Up..."
+          >
+            Sign Up
+          </SubmitButton>
+          {searchParams?.message && (
+            <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+              {searchParams.message}
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

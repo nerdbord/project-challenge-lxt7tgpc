@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useState, useLayoutEffect, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 interface ThemeContextType {
   theme?: string;

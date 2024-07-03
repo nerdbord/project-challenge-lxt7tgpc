@@ -3,9 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import Footer from '@/components/Footer';
-import { useEffect, useState } from 'react';
-import { themeChange } from 'theme-change';
-
+import { ThemeProvider } from '@/components/changeTheme/ThemeContext';
+import { ClientThemeWrapper } from '@/components/changeTheme/ClientThemeWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 const defaultUrl = process.env.VERCEL_URL
@@ -28,8 +27,12 @@ export default function RootLayout({
       <body className={`${inter.className} bg-none`} data-theme="cupcake">
         <main className="flex min-h-screen w-full flex-col items-center">
           <Toaster position="bottom-right" />
-          {children}
-          <Footer />
+
+          <ThemeProvider>
+            <ClientThemeWrapper>
+              {children} <Footer />
+            </ClientThemeWrapper>
+          </ThemeProvider>
         </main>
       </body>
     </html>

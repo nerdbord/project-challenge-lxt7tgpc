@@ -53,8 +53,8 @@ const GalleryThumbnail = (props: GalleryThumbnailProps) => {
         className="h-full w-full object-cover group-hover:opacity-50"
       />
       <dialog id={`fullscreenModal-${props.position}`} className="modal">
-        <div className="-11/12 modal-box absolute h-fit max-w-5xl">
-          <div className="h-5/6 w-11/12">
+        <div className="modal-box absolute max-w-5xl w-11/12 h-11/12">
+          <div className="h-fill w-11/12">
             <Image
               src={props.url}
               alt={'Fulscreen photo'}

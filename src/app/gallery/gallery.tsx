@@ -19,6 +19,8 @@ const Gallery = (props: GalleryProps) => {
     serveFotos();
   }, [props.galleryReload]);
 
+
+  //hey nerdy, the code below this line lists uploaded images
   const serveFotos = async () => {
     const { data: userData } = await supabase.auth.getUser();
     const userID = userData.user?.id;

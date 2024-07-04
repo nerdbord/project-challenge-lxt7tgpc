@@ -19,8 +19,6 @@ const Gallery = (props: GalleryProps) => {
     serveFotos();
   }, [props.galleryReload]);
 
-
-  //hey nerdy, the code below this line lists uploaded images
   const serveFotos = async () => {
     const { data: userData } = await supabase.auth.getUser();
     const userID = userData.user?.id;
@@ -47,6 +45,7 @@ const Gallery = (props: GalleryProps) => {
     setLoading(false)
   };
 
+    //hey nerdy, the code in this file allows to delete fotos from storage
   const handleDelete = async (path: string) => {
     const { data, error } = await supabase.storage.from(userId).remove([path]);
 

@@ -8,7 +8,7 @@ import { ProvidersPanel } from './ProvidersPanel';
 export default function Login({ searchParams }: { searchParams: { message: string } }) {
   const signIn = async (formData: FormData) => {
     'use server';
-
+    //login stuff is in here
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     const supabase = createClient();

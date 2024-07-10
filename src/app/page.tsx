@@ -2,7 +2,7 @@ import AnonymousFileUpload from '@/components/AnonymousFileUpload';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Header from '@/components/Header';
-import Head from 'next/head';
+import Footer from '@/components/Footer';
 
 export default async function Index() {
   const supabase = createClient();
@@ -21,6 +21,7 @@ export default async function Index() {
       <div className="container flex w-full items-center justify-between py-3 text-sm">
         <AnonymousFileUpload />
       </div>
+      <Footer />
     </div>
   );
 }

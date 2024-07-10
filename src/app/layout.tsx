@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
-import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/changeTheme/ThemeContext';
 import { ClientThemeWrapper } from '@/components/changeTheme/ClientThemeWrapper';
+
 const inter = Inter({ subsets: ['latin'] });
 
 const defaultUrl = process.env.VERCEL_URL
@@ -28,9 +28,7 @@ export default function RootLayout({
         <main className="flex min-h-screen w-full flex-col items-center">
           <Toaster position="bottom-right" />
           <ThemeProvider>
-            <ClientThemeWrapper>
-              {children} <Footer />
-            </ClientThemeWrapper>
+            <ClientThemeWrapper>{children}</ClientThemeWrapper>
           </ThemeProvider>
         </main>
       </body>

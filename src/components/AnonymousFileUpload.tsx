@@ -61,6 +61,7 @@ const AnonymousFileUpload = () => {
           type="file"
           onChange={handleFileChange}
           id="fileInput"
+          accept="image/*"
           className="file-input file-input-bordered file-input-primary w-full max-w-xs"
         />
         <button onClick={handleUpload} disabled={!file} className="btn btn-primary">
@@ -76,14 +77,17 @@ const AnonymousFileUpload = () => {
         <div className="modal-box">
           <h3 className="text-lg font-bold">{isLoading ? 'URL loading...' : "Here's your URL!"}</h3>
           {isLoading && (
-            <div className="max-w-full flex justify-center">
+            <div className="flex max-w-full justify-center">
               <span className="loading loading-spinner loading-lg"></span>
             </div>
           )}
           {signedUrl && (
             <div>
               <p className="py-4">Your URL has been copied into your clipboard.</p>
-              <p className="py-4">The link will be valid for two hours. If you want to get a permanent URL, please log in.</p>
+              <p className="py-4">
+                The link will be valid for two hours. If you want to get a permanent URL, please log
+                in.
+              </p>
             </div>
           )}
           <div className="modal-action">

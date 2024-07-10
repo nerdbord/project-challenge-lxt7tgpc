@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
+    <footer className="border-t-foreground/10 fixed bottom-0 left-0 flex w-full justify-center border-t bg-inherit p-4 text-center text-xs">
       <p>
-        Created by{" "}
+        Created by
         <a
           href="https://github.com/filwas"
           target="_blank"
@@ -10,7 +10,9 @@ const Footer = () => {
           rel="noreferrer"
         >
           fwas
-        </a> &         <a
+        </a>
+        &
+        <a
           href="https://github.com/Wiecek-K"
           target="_blank"
           className="font-bold hover:underline"

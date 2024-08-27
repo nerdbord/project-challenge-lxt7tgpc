@@ -9,6 +9,7 @@ interface FileUploadProps {
 }
 const FileUpload = (props: FileUploadProps) => {
   const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false)
   const supabase = createClient();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,7 @@ const FileUpload = (props: FileUploadProps) => {
 
   const handleUpload = async () => {
     if (!file) return;
+    setLoading(true)
 
     const user = await supabase.auth.getUser();
 
@@ -62,7 +64,9 @@ const FileUpload = (props: FileUploadProps) => {
       console.log('File uploaded successfully:', data);
       toast.success('File uploaded!');
     }
+
     props.galleryReloadHandler();
+    setLoading(false)
   };
 
   return (
@@ -71,9 +75,10 @@ const FileUpload = (props: FileUploadProps) => {
         type="file"
         onChange={handleFileChange}
         id="fileInput"
+        accept="image/*"
         className="file-input file-input-bordered file-input-primary w-full max-w-xs"
       />
-      <button onClick={handleUpload} disabled={!file} className="btn btn-primary">
+      <button onClick={handleUpload} disabled={!file || loading} className="btn btn-primary">
         Upload
       </button>
     </div>
